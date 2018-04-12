@@ -1,6 +1,5 @@
 package controller;
 
-import model.Tree;
 import view.MainWindowJFrame;
 import persistence.FileManager;
 import java.awt.event.ActionEvent;
@@ -8,12 +7,10 @@ import java.awt.event.ActionListener;
 
 public class Controller implements ActionListener{
 
-	private Tree treeManager;
 	private FileManager fileManager;
 	private MainWindowJFrame mainWindow;
 	
 	public Controller() {
-		treeManager = new Tree();
 		fileManager = new FileManager();
 		mainWindow = new MainWindowJFrame(this);
 	}
@@ -31,7 +28,8 @@ public class Controller implements ActionListener{
 	
 	private void loadFolder() {
 		mainWindow.showFileChooser();
-		fileManager.getFiles(mainWindow.getFolderRoute());
+		fileManager.readFolder(mainWindow.getFolderRoute(), mainWindow.getTotalSize()*1024);
+		mainWindow.paintTree(fileManager.getRoot());
 	}
 
 	public static void main(String[] args) {

@@ -2,6 +2,7 @@ package view;
 
 import model.Node;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTree;
 import java.awt.Component;
 import java.awt.Image;
@@ -19,13 +20,13 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 public class MainWindowJFrame extends JFrame{
 
-	private static final Color WHITE = Color.WHITE;
-	private static final Color BACKGROUND = Color.decode("#004c40");
 	private JTree folderTree;
 	private String folderRoute;
 	private DefaultMutableTreeNode treeNode;
+	private static final Color WHITE = Color.WHITE;
 	private static final long serialVersionUID = 1L;
 	private static final String TITLE = "FolderExtension";
+	private static final Color BACKGROUND = Color.decode("#004c40");
 
 	public MainWindowJFrame(ActionListener controller) {
 		setTitle(TITLE);
@@ -40,7 +41,7 @@ public class MainWindowJFrame extends JFrame{
 		ImageIcon fot = new ImageIcon(getClass().getResource("/img/folder.png"));
 		Icon icon = new ImageIcon(fot.getImage().getScaledInstance(32, 32, Image.SCALE_AREA_AVERAGING));
 		
-		JButton btnSelectFolder = new JButton("Select image");
+		JButton btnSelectFolder = new JButton("Seleccione la carpeta");
 		btnSelectFolder.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnSelectFolder.addActionListener(controller);
 		btnSelectFolder.setActionCommand("LOAD FOLDER");
@@ -55,6 +56,10 @@ public class MainWindowJFrame extends JFrame{
 
 	public String getFolderRoute() {
 		return folderRoute;
+	}
+	
+	public int getTotalSize(){
+		return Integer.parseInt(JOptionPane.showInputDialog("Introduza tamaño de archivos a calificar (KB)"));
 	}
 	
 	public void showFileChooser() {

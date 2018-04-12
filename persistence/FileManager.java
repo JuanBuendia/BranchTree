@@ -32,10 +32,6 @@ public class FileManager {
 			}
 		}
 	}
-	
-	public void showTree(){
-		fileTree.showTree();
-	}
 
 	public File getFather() {
 		return father;

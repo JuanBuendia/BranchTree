@@ -72,9 +72,12 @@ public class MainWindowJFrame extends JFrame{
 	}
 	
 	public void paintTree(Node root) {
+		treeNode.removeAllChildren();
 		DefaultMutableTreeNode uiRoot = new DefaultMutableTreeNode(root);
 		treeNode.add(uiRoot);
 		showTreeNode(uiRoot, root.getNodeList());
+		revalidate();
+		repaint();
 	}
 	
 	public void showTreeNode(DefaultMutableTreeNode actual, ArrayList<Node> list) {

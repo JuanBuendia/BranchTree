@@ -22,6 +22,6 @@ public class Node {
 
 	@Override
 	public String toString() {
-		return "Node [info=" + info + ", nodeList=" + nodeList + "]";
+		return "Node [info=" + info + ", nodeList=" + nodeList.size() + "]";
 	}
 }

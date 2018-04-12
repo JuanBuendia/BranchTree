@@ -62,6 +62,17 @@ public class Tree {
 		}
 		nodeSize.getNodeList().add(new Node(file.getName()));
 	}
+	
+	public void showTree(){
+		showTree(root, " ");
+	}
+
+	private void showTree(Node actual, String space) {
+		System.out.println(space + actual.getInfo());
+		for (Node node : actual.getNodeList()) {
+			showTree(node, space + "                  |");
+		}
+	}
 
 	public void clearTree(){
 		root.getNodeList().clear();

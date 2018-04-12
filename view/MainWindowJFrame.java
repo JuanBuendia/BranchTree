@@ -4,15 +4,23 @@ import model.Node;
 import javax.swing.JFrame;
 import javax.swing.JTree;
 import java.awt.Component;
+import java.awt.Image;
 import java.util.ArrayList;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
+import java.awt.Color;
+
 import javax.swing.JFileChooser;
 import java.awt.event.ActionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 public class MainWindowJFrame extends JFrame{
 
+	private static final Color WHITE = Color.WHITE;
+	private static final Color BACKGROUND = Color.decode("#004c40");
 	private JTree folderTree;
 	private String folderRoute;
 	private DefaultMutableTreeNode treeNode;
@@ -23,15 +31,22 @@ public class MainWindowJFrame extends JFrame{
 		setTitle(TITLE);
 		setExtendedState(MAXIMIZED_BOTH);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setIconImage(new ImageIcon(getClass().getResource("/img/logo.png")).getImage());
 		
 		treeNode = new DefaultMutableTreeNode();
 		folderTree = new JTree(treeNode);
 		add(folderTree, BorderLayout.CENTER);
 		
+		ImageIcon fot = new ImageIcon(getClass().getResource("/img/folder.png"));
+		Icon icon = new ImageIcon(fot.getImage().getScaledInstance(32, 32, Image.SCALE_AREA_AVERAGING));
+		
 		JButton btnSelectFolder = new JButton("Select image");
 		btnSelectFolder.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnSelectFolder.addActionListener(controller);
 		btnSelectFolder.setActionCommand("LOAD FOLDER");
+		btnSelectFolder.setBackground(BACKGROUND);
+		btnSelectFolder.setForeground(WHITE);
+		btnSelectFolder.setIcon(icon);
 		add(btnSelectFolder, BorderLayout.PAGE_END);
 		folderRoute = null;
 		
